@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Sebastian Hồ</title>
+    <link rel="stylesheet" href="css/cv.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="theme-toggle">
+        <button id="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="cv-content">
+        <h1 data-i18n="cv.title">Curriculum Vitae</h1>
+        <h2 data-i18n="cv.subtitle">Professional Experience & Skills</h2>
+
+        <section class="experience">
+            <h3 data-i18n="cv.experience.title">Professional Experience</h3>
+            <div class="experience-card">
+                <h4 data-i18n="cv.experience.job1.title">Senior Data Engineer</h4>
+                <p class="company" data-i18n="cv.experience.job1.company">Tech Company GmbH</p>
+                <p class="period" data-i18n="cv.experience.job1.period">2020 - Present</p>
+                <p class="description" data-i18n="cv.experience.job1.description">Leading data engineering projects and mentoring junior developers.</p>
+            </div>
+            <div class="experience-card">
+                <h4 data-i18n="cv.experience.job2.title">Data Engineer</h4>
+                <p class="company" data-i18n="cv.experience.job2.company">Data Solutions Inc.</p>
+                <p class="period" data-i18n="cv.experience.job2.period">2018 - 2020</p>
+                <p class="description" data-i18n="cv.experience.job2.description">Developing and maintaining data pipelines for business analytics.</p>
+            </div>
+        </section>
+
+        <section class="skills">
+            <h3 data-i18n="cv.skills.title">Skills</h3>
+            <div class="skills-grid">
+                <div class="skills-category">
+                    <h4 data-i18n="cv.skills.data.title">Data Engineering</h4>
+                    <ul>
+                        <li data-i18n="cv.skills.data.spark">Apache Spark</li>
+                        <li data-i18n="cv.skills.data.kafka">Apache Kafka</li>
+                        <li data-i18n="cv.skills.data.airflow">Apache Airflow</li>
+                        <li data-i18n="cv.skills.data.sql">SQL</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4 data-i18n="cv.skills.cloud.title">Cloud Platforms</h4>
+                    <ul>
+                        <li data-i18n="cv.skills.cloud.aws">AWS</li>
+                        <li data-i18n="cv.skills.cloud.azure">Azure</li>
+                        <li data-i18n="cv.skills.cloud.gcp">GCP</li>
+                        <li data-i18n="cv.skills.cloud.docker">Docker</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4 data-i18n="cv.skills.programming.title">Programming</h4>
+                    <ul>
+                        <li data-i18n="cv.skills.programming.python">Python</li>
+                        <li data-i18n="cv.skills.programming.java">Java</li>
+                        <li data-i18n="cv.skills.programming.scala">Scala</li>
+                        <li data-i18n="cv.skills.programming.javascript">JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/i18n.js"></script>
+    <script>
+        // Load header component
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header-placeholder').innerHTML = html;
+            });
+    </script>
+</body>
+</html>

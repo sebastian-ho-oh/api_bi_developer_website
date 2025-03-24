@@ -1,0 +1,438 @@
+:root {
+    /* Brand Colors */
+    --primary-color: #2d1e61;
+    --primary-light: #46aaeb;
+    --secondary-color: #7071cb;
+    --accent-color: #9a38ac;
+    --highlight-color: #c4008d;
+    
+    /* Light Mode Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9ff;
+    --text-primary: #2d1e61;
+    --text-secondary: #7071cb;
+    --border-color: #e6e8ff;
+    
+    /* Dark Mode Colors */
+    --dark-bg-primary: #1a1039;
+    --dark-bg-secondary: #2d1e61;
+    --dark-text-primary: #ffffff;
+    --dark-text-secondary: #46aaeb;
+    --dark-border-color: #7071cb;
+    
+    /* Common */
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] {
+    --bg-primary: var(--dark-bg-primary);
+    --bg-secondary: var(--dark-bg-secondary);
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+    --border-color: var(--dark-border-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-secondary);
+}
+
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--bg-secondary);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--bg-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 3rem;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative;
+    text-align: center;
+}
+
+.container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.content {
+    width: 100%;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+[data-theme="dark"] h1 {
+    background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p:last-child {
+    margin-bottom: 2.5rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition-speed);
+    flex: 1;
+    justify-content: center;
+    max-width: 200px;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow);
+}
+
+.button.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.button.primary:hover {
+    background-color: var(--primary-light);
+}
+
+.button.secondary {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .button.secondary {
+    border-color: var(--primary-light);
+    color: var(--primary-light);
+}
+
+.button.secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+[data-theme="dark"] .button.secondary:hover {
+    background-color: var(--primary-light);
+    color: var(--dark-bg-primary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.social-links a {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    transition: all var(--transition-speed);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    background-color: var(--bg-secondary);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .social-links a:hover {
+    color: var(--primary-light);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+}
+
+.theme-toggle button {
+    background: var(--bg-secondary);
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all var(--transition-speed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    box-shadow: var(--box-shadow);
+}
+
+.theme-toggle button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+
+    body {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 2rem;
+    }
+
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+
+    .button {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
+    .theme-toggle {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links a {
+        font-size: 1.1rem;
+    }
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.service-card {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .service-card i {
+    color: var(--primary-light);
+}
+
+.service-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.contact-section {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.contact-section p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .services {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .service-card i {
+        font-size: 2rem;
+    }
+
+    .service-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .contact-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services {
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .service-card {
+        padding: 1.25rem;
+    }
+
+    .service-card i {
+        font-size: 1.8rem;
+    }
+
+    .service-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .contact-section h2 {
+        font-size: 1.5rem;
+    }
+} 

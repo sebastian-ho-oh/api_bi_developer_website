@@ -1,0 +1,44 @@
+<!doctype html><html lang="de" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CV Editor - API BI Developer</title><link rel="stylesheet" href="./css/styles.css"><link rel="stylesheet" href="./css/print.css" media="print"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><script defer="defer" src="assets/js/cv-editor.98cab30042cad1aa23ef.js"></script></head><body><div id="navigation"></div><main class="editor-container"><div id="cv-editor"></div></main><div id="footer"></div><script type="module">import { NavigationComponent } from './js/components/navigation.js';
+        import { FooterComponent } from './js/components/footer.js';
+        import { CVEditorComponent } from './js/components/cv-editor.js';
+        import './js/i18n.js';
+        import './js/theme.js';
+
+        // Check authentication
+        const adminToken = localStorage.getItem('adminToken');
+        if (!adminToken) {
+            window.location.href = 'login.html';
+        }
+
+        // Verify token with server
+        fetch('http://localhost:4000/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${adminToken}`
+            },
+            body: JSON.stringify({
+                query: `
+                    query {
+                        isAuthenticated
+                    }
+                `
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.data.isAuthenticated) {
+                localStorage.removeItem('adminToken');
+                window.location.href = 'login.html';
+            } else {
+                // Initialize components
+                new NavigationComponent(document.getElementById('navigation'));
+                new FooterComponent(document.getElementById('footer'));
+                new CVEditorComponent(document.getElementById('cv-editor'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            localStorage.removeItem('adminToken');
+            window.location.href = 'login.html';
+        });</script></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freelance Services - Sebastian Hồ</title>
+  <!-- Hier Pfade relativ zu public/ -->
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/freelance.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header wird hier eingefügt -->
+  <div id="header-placeholder"></div>
+
+  <div class="theme-toggle">
+    <button id="theme-toggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
+  <main class="freelance-content">
+    <h1 data-i18n="freelance.title">Freelance Services</h1>
+    <h2 data-i18n="freelance.subtitle">Professional Data Engineering Solutions</h2>
+    
+    <section class="services">
+      <h3 data-i18n="freelance.services.title">My Services</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-code"></i>
+          <h4 data-i18n="freelance.services.pipeline.title">Data Pipeline Development</h4>
+          <p data-i18n="freelance.services.pipeline.description">Developing scalable and efficient data pipelines for your business needs.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-chart-line"></i>
+          <h4 data-i18n="freelance.services.analytics.title">Data Analytics</h4>
+          <p data-i18n="freelance.services.analytics.description">Transform your data into actionable insights.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-cloud"></i>
+          <h4 data-i18n="freelance.services.cloud.title">Cloud Solutions</h4>
+          <p data-i18n="freelance.services.cloud.description">Cloud-native data solutions with modern technologies.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h3 data-i18n="freelance.contact.title">Contact</h3>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name" data-i18n="freelance.contact.name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email" data-i18n="freelance.contact.email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message" data-i18n="freelance.contact.message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" data-i18n="freelance.contact.submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    // Header laden
+    fetch('/components/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+</body>
+</html>
