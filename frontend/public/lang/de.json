@@ -38,6 +38,5 @@
   "cv.skills.cloud.aws": "AWS",
   "cv.skills.cloud.azure": "Azure",
   "cv.skills.cloud.gcp": "GCP",
-  "cv.skills.cloud.docker": "Docker",
-  "freelance.ctaContact": "Kontakt aufnehmen"
+  "cv.skills.cloud.docker": "Docker"
 }
