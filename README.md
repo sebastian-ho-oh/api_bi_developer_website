@@ -1,96 +1,54 @@
-# API BI Developer Website
+# React + TypeScript + Vite
 
-Eine moderne Website für API- und Business Intelligence-Entwicklung, erstellt mit modernen Webtechnologien.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Technologie-Stack
+Currently, two official plugins are available:
 
-### Frontend
-- HTML5
-- CSS3 (mit CSS-Variablen für Theming)
-- JavaScript (ES6+)
-- Apollo Client für GraphQL
-- Responsive Design
-- Dark/Light Mode
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Backend
-- Node.js
-- Express
-- GraphQL
-- MongoDB
-- JWT Authentication
+## Expanding the ESLint configuration
 
-## Projektstruktur
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```
-api_bi_developer_website/
-├── frontend/           # Frontend-Anwendung
-│   ├── public/        # Statische Dateien
-│   │   ├── assets/    # CSS, JS, Bilder
-│   │   └── *.html     # HTML-Dateien
-│   └── package.json   # Frontend-Abhängigkeiten
-├── backend/           # Backend-Anwendung
-│   ├── src/          # Quellcode
-│   └── package.json  # Backend-Abhängigkeiten
-└── scripts/          # Hilfsskripte
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-## Installation
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-1. Repository klonen:
-```bash
-git clone https://github.com/yourusername/api_bi_developer_website.git
-cd api_bi_developer_website
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-
-2. Backend-Abhängigkeiten installieren:
-```bash
-cd backend
-npm install
-```
-
-3. Frontend-Abhängigkeiten installieren:
-```bash
-cd ../frontend
-npm install
-```
-
-## Entwicklung
-
-1. Backend-Server starten:
-```bash
-cd backend
-npm start
-```
-
-2. Frontend-Server starten:
-```bash
-cd frontend
-npm start
-```
-
-Die Anwendung ist dann unter http://localhost:3000 erreichbar.
-
-## Features
-
-- Responsive Design
-- Dark/Light Mode
-- GraphQL API
-- JWT Authentication
-- CV Editor
-- Kontaktformular
-- SEO-optimiert
-- Performance-optimiert
-
-## Best Practices
-
-- Modulare Komponenten
-- CSS-Variablen für Theming
-- Responsive Design
-- Progressive Enhancement
-- Accessibility (WCAG 2.1)
-- Performance Optimization
-- Security Best Practices
-
-## Lizenz
-
-MIT

@@ -1,1 +1,0 @@
-(()=>{"use strict";document.addEventListener("DOMContentLoaded",(()=>{console.log("Login page initialized")}))})();
